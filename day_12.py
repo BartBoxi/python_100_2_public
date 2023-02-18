@@ -22,13 +22,27 @@ enemies = 1
 #global function
 
 #there is no block scope in python
-
-game_level = 3
-def create_enemy():
-  enemies = ["Skeleton", "Zombie", "Alien"]
-  if game_level < 5:
-    new_enemy = enemies[0]
-
-  print(new_enemy)
+#
+# game_level = 3
+# def create_enemy():
+#   enemies = ["Skeleton", "Zombie", "Alien"]
+#   if game_level < 5:
+#     new_enemy = enemies[0]
+#
+#   print(new_enemy)
 
   #to remeber if the var is within function it wont be available outside of it
+
+
+# Global Scope
+
+# enemies = 1
+#
+# def increase_enemies():
+#   global enemies
+#   enemies += 1
+#   print(f"enemies inside function: {enemies}")
+#
+# increase_enemies()
+# print(f"enemies outside function: {enemies}")
+
