@@ -12,6 +12,9 @@ print(logo)
 
 #Generate a radnom account from the game
 
+def get_random_account():
+    return random.choice(data)
+
 account_a = random.choice(data)
 account_b = random.choice(data)
 if account_a == account_b:
@@ -19,42 +22,63 @@ if account_a == account_b:
 print(account_a)
 
 #Format the account data into printable format
-
-account_name = account_a["name"]
-account_description = account_a["description"]
-account_country = account_a["country"]
-
-print(f"Account A is {account_name}, a {account_description} from {account_country}")
+def format_data(account):
+    account_name = account_a["name"]
+    account_description = account_a["description"]
+    account_country = account_a["country"]
+    account_follower = account_a["follower_count"]
+    print(f"Account A is {account_name}, a {account_description} from {account_country}")
 
 account_name_b = account_b['name']
 account_description_b = account_b["description"]
 account_country_b = account_b["country"]
+account_follower_b = account_b["follower_count"]
 
 print(f"Account B is {account_name_b}, a {account_description_b} from {account_country_b}")
+
 
 
 #Ask user for a guess
 
 answer = input("Guess which account got more subscribers. Account A or B? Enter 'A' or 'B' ")
 
-#Check if user is correct
-
-if answer == "A" and (account_a["follower_count"] > account_b["follower_count"]):
-    print("You are right")
-else:
-    print("You are wrong")
-
-#Get follower count of each account
+    #Check if user is correct
 
 
+    if answer == "A" and (account_a["follower_count"] > account_b["follower_count"]):
+        result: str = "You are right"
+        print(result)
+    else:
+        result = str("You are wrong")
+        print(result)
+        should_game_go = False
 
-# Use if statement to check if user is correct
 
-#Score keeping
+
+    #Get follower count of each account
+
+    print(f"The number of followers for {account_a} is {account_follower}")
+    print(f"The number of followers for {account_b} is {account_follower_b}")
+
+    #Score keeping
+
+    wynik = 0
+    if result == "You are right":
+        wynik += 1
+        print(f"Your score is {wynik}")
+    else:
+        print(wynik)
+
+
+
+
+
 
 #Make the game repeatable
 
 #Making account at position B become the next account at position A
+
+
 
 # clear the screen between rounds
 
