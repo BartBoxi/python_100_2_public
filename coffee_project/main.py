@@ -67,6 +67,7 @@ def report():
     print(resources)
 
 def money():
+    is_the_coffe_done = False
     if choice == "espresso":
         price = MENU['espresso']['cost']
         print(price)
@@ -106,32 +107,65 @@ def money():
     if suma == price:
         print("Thanks for payment")
     elif suma < 0:
-        print(f"You pay too much. Your change will be {suma - price}")
+        print(f"You pay too much. Your change will be {round(suma - price)}")
     elif suma > 0:
-        print(f"You paid not enough. Still missing {price - suma}")
+        print(f"You paid not enough. Still missing {(suma - price)}")
         pennies = int(input("How many pennies you got?"))
-        total_pennies = pennies * 0.01
-        suma = price - total_pennies
-        print(f"You put {pennies} which is giving {total_pennies}. Remaining amount to pay is {suma} ")
-        monety["pennies"] = pennies
+        total_pennies = round(pennies * 0.01)
+        suma = round(price - total_pennies)
+        priceminussuma = round(price - suma)
+        if priceminussuma < 0:
+            print(f"You put {pennies} which is giving {round(total_pennies)}. Your change is {priceminussuma}")
+            monety["pennies"] = pennies
+        elif priceminussuma == 0:
+            print("Thanks. We are preparing your drink")
+            is_the_coffe_done = True
+        else:
+            print(f"You put {pennies} which is giving {round(total_pennies)}. Remaining amount to pay is {priceminussuma} ")
+            monety["pennies"] = pennies
 
         nickles = int(input("How many nickles you got?"))
         total_nickles = nickles * 0.05
-        suma = suma - total_nickles
-        print(f"You put {nickles} which is giving {total_nickles}. Remaining amount to pay is {suma} ")
-        monety["nickles"] = nickles
+        suma = round(suma - total_nickles)
+        priceminussuma = round(price - suma)
+        if priceminussuma < 0:
+            print(f"You put {nickles} which is giving {round(total_nickles)}. Your change is {priceminussuma}")
+            monety["nickles"] = nickles
+        elif priceminussuma == 0:
+            print("Thanks. We are preparing your drink")
+
+        else:
+            print(f"You put {nickles} which is giving {round(total_nickles)}. Remaining amount to pay is {priceminussuma} ")
+            monety["nickles"] = nickles
 
         dimes = int(input("How many dimes you got?"))
         total_dimes = dimes * 0.1
-        suma = suma - total_dimes
-        print(f"You put {dimes} which is giving {total_dimes}. Remaining amount to pay is {suma} ")
-        monety["dimes"] = dimes
+        suma = round(suma - total_dimes)
+        priceminussuma = round(price - suma)
+        if priceminussuma < 0:
+            print(f"You put {dimes} which is giving {round(total_dimes)}. Your change is {priceminussuma}")
+            monety["dimes"] = dimes
+        elif priceminussuma == 0:
+            print("Thanks. We are preparing your drink")
+            return
+        else:
+            print(f"You put {dimes} which is giving {round(total_dimes)}. Remaining amount to pay is {priceminussuma} ")
+            monety["dimes"] = dimes
+
 
         quarters = int(input("How many quarters you got?"))
         total_quarters = quarters * 0.25
-        suma = suma - total_quarters
-        print(f"You put {quarters} which is giving {total_quarters}. Remaining amount to pay is {suma} ")
-        monety["quarters"] = quarters
+        suma = round(suma - total_quarters)
+        priceminussuma = round(price - suma)
+        if priceminussuma > 0:
+            print(f"You put {quarters} which is giving {round(total_quarters)}. Remaining amount to pay is {priceminussuma} ")
+            monety["quarters"] = quarters
+        elif priceminussuma < 0:
+            print(f"You put {quarters} which is giving {round(total_quarters)}. Your change is {priceminussuma} ")
+            monety["quarters"] = quarters
+        elif priceminussuma == 0:
+            print("Thanks. We are preparing your drink")
+            return
     else:
         return 0
 
