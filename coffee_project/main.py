@@ -70,13 +70,13 @@ def money():
     is_the_coffe_done = False
     if choice == "espresso":
         price = MENU['espresso']['cost']
-        print(price)
+        print("cena to: ", price)
     elif choice == "latte":
         price = MENU['latte']['cost']
-        print(price)
+        print("cena to: ", price)
     elif choice == "cappuccino":
         price = MENU['cappuccino']['cost']
-        print(price)
+        print("cena to: ", price)
     else:
         return 0
 
@@ -101,25 +101,29 @@ def money():
     quarters = int(input("How many quarters you got?"))
     total_quarters = quarters * 0.25
     suma = suma - total_quarters
+    print(suma)
     print(f"You put {quarters} which is giving {total_quarters}. Remaining amount to pay is {suma} ")
     monety["quarters"] = quarters
 
     if suma == price:
         print("Thanks for payment")
+        is_the_coffe_done = True
     elif suma < 0:
-        print(f"You pay too much. Your change will be {round(suma - price)}")
+        print(f"You pay too much. Your change will be {round(price - suma)}")
+        is_the_coffe_done = True
     elif suma > 0:
         print(f"You paid not enough. Still missing {(suma - price)}")
         pennies = int(input("How many pennies you got?"))
         total_pennies = round(pennies * 0.01)
         suma = round(price - total_pennies)
         priceminussuma = round(price - suma)
-        if priceminussuma < 0:
-            print(f"You put {pennies} which is giving {round(total_pennies)}. Your change is {priceminussuma}")
-            monety["pennies"] = pennies
-        elif priceminussuma == 0:
+        if priceminussuma == 0:
             print("Thanks. We are preparing your drink")
             is_the_coffe_done = True
+            return 0
+        elif priceminussuma < 0:
+            print(f"You put {pennies} which is giving {round(total_pennies)}. Your change is {priceminussuma}")
+            monety["pennies"] = pennies
         else:
             print(f"You put {pennies} which is giving {round(total_pennies)}. Remaining amount to pay is {priceminussuma} ")
             monety["pennies"] = pennies
@@ -133,7 +137,7 @@ def money():
             monety["nickles"] = nickles
         elif priceminussuma == 0:
             print("Thanks. We are preparing your drink")
-
+            return 0
         else:
             print(f"You put {nickles} which is giving {round(total_nickles)}. Remaining amount to pay is {priceminussuma} ")
             monety["nickles"] = nickles
@@ -147,9 +151,9 @@ def money():
             monety["dimes"] = dimes
         elif priceminussuma == 0:
             print("Thanks. We are preparing your drink")
-            return
+            return 0
         else:
-            print(f"You put {dimes} which is giving {round(total_dimes)}. Remaining amount to pay is {priceminussuma} ")
+            print(f"You put {dimes} which is giving {round(total_dimes)}. Remaining amount to pay is {round(priceminussuma)} ")
             monety["dimes"] = dimes
 
 
@@ -165,7 +169,7 @@ def money():
             monety["quarters"] = quarters
         elif priceminussuma == 0:
             print("Thanks. We are preparing your drink")
-            return
+            return 0
     else:
         return 0
 
