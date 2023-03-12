@@ -1,6 +1,5 @@
 ###Blackjack project###
 import random
-import clear
 from art import logo
 
 print(logo)
