@@ -42,7 +42,7 @@ for _ in range(10):
         t.dot(20, random.choice(color_list))
         t.up()
         t.fd(50)
-    y += 70
+    y += 50
     t.goto(x, y)
 
 
