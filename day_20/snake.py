@@ -7,6 +7,7 @@ class Snake:
     def __init__(self):
         self.snake = []
         self.create_snake()
+        self.head = self.snake[0]
 
     def create_snake(self):
         for _ in STARTING_POSITION:
@@ -22,3 +23,16 @@ class Snake:
             new_y = self.snake[i - 1].ycor()
             self.snake[i].goto(new_x, new_y)
         self.snake[0].forward(MOVE_DISTANCE)
+
+    def up(self):
+        if snake
+        self.snake[0].setheading(90)
+
+    def down(self):
+        self.snake[0].setheading(270)
+
+    def right(self):
+        self.snake[0].setheading(0)
+
+    def left(self):
+        self.snake[0].setheading(180)
