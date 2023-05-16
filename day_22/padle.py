@@ -20,6 +20,3 @@ class Paddle(Turtle):
         new_y = self.ycor() - 20
         self.goto(self.xcor(), new_y)
 
-    screen.listen()
-    screen.onkey(go_up, "Up")
-    screen.onkey(go_down, "Down")
