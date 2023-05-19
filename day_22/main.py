@@ -1,3 +1,4 @@
+import time
 from turtle import Screen, Turtle
 from padle import Paddle
 from ball import Ball
@@ -22,9 +23,14 @@ ball = Ball()
 screen.tracer()
 game_is_on = True
 while game_is_on:
+    time.sleep(0.03)
     screen.update()
-    ball.sety(ball.ycor() + 5)
-    ball.setx(ball.xcor() + 5)
+    ball.move()
+
+
+    if ball.ycor() > 290 or ball.ycor()< -290:
+        ball.bounce()
+
 
 
 
