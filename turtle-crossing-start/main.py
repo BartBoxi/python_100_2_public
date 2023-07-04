@@ -16,9 +16,6 @@ car_manager = CarManager()
 screen.listen()
 screen.onkey(player.up, "Up")
 
-    #this is where i finished - how to move the cars and iterate them
-
-
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
@@ -26,9 +23,17 @@ while game_is_on:
     car_manager.create_car()
     car_manager.move_cars()
 
-    # Detect colision with car
+    # Detect collision with car
     for car in car_manager.all_cars:
         if car.distance(player) < 20:
             game_is_on = False
+
+    #Detect crosing the whole game
+    if player.is_at_finish_line():
+        player.go_to_start()
+    else:
+        game_is_on = False
+
+screen.exitonclick()
 
 
