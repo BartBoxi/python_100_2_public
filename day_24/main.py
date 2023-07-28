@@ -14,5 +14,6 @@
 #     file.write("\nNew text.")
 #     file.write("\nHello worlds")
 
-with open("new_file.txt", mode="w") as file:
+with open("/Users/bartoszpudlo/PycharmProjects/python_100_2/day_24/my_file.txt", mode="w") as file:
     file.write("\nHello worlds")
+    file.read()
