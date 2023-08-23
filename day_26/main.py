@@ -1,12 +1,8 @@
-numbers = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
-# 🚨 Do Not Change the code above 👆
+file1 = open("file1.txt", "r")
+file1 = file1.readlines()
 
-#Write your 1 line code 👇 below:
+file2 = open("file2.txt", "r")
+file2 = file2.readlines()
 
-squered_number = [i * i for i in numbers]
-print(squered_number)
-
-#Write your code 👆 above:
-
-
-
+results = [int(x) for x in file1 if x in file2]
+print(results)
