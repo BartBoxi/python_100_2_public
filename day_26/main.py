@@ -1,8 +1,11 @@
-file1 = open("file1.txt", "r")
-file1 = file1.readlines()
 
-file2 = open("file2.txt", "r")
-file2 = file2.readlines()
+import pandas as pd
+data = pd.read_csv("nato_phonetic_alphabet.csv")
+phonetic_dict = {row.letter: row.code for (index, row) in data.iterrows()}
+#print(data)
 
-results = [int(x) for x in file1 if x in file2]
-print(results)
+#TODO 2. Create a list of the phonetic code words from a word that the user inputs.
+
+slowo = input("What is the word?").upper()
+nato_alpa = [phonetic_dict[letter] for letter in slowo]
+print(nato_alpa)
