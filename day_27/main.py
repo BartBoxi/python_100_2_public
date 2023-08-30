@@ -1,6 +1,36 @@
-# def foo(a, b=4, c=6):
-#     print(a,b,c)
-#
-# print(foo(4,8,9))
+from tkinter import *
+
+window = Tk()
 
 
+
+window.title("My GUI program ")
+window.minsize(width= 500, height=500)
+
+
+
+my_label = Label(text="Im a label", font=("Arial", 24, "italic"))
+my_label.pack()
+
+#Button
+
+def button_clicked():
+    output = input.get()
+
+    print("I got clicked")
+    my_label.config(text=output)
+
+
+button = Button(text="Click me", command = button_clicked)
+button.pack()
+
+
+#Entry
+
+input = Entry()
+input.pack()
+
+
+
+
+window.mainloop()
