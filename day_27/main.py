@@ -27,7 +27,7 @@ button.pack()
 
 #Entry
 
-input = Entry()
+input = Entry("Text to start with")
 input.pack()
 
 
