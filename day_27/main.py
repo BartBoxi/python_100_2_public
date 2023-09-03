@@ -19,15 +19,12 @@ label1.grid(row =1, column = 1)
 
 
 entry = Entry(width=10)
-entry.insert(END, string="0")
 entry.grid(row = 0, column=2)
-entry = (entry.get())
-entry = int(entry)
-print(entry)
+
 
 
 def action():
-    miles = entry.get()
+    miles = float(entry.get())
     km = miles * 1.609
     label4.config(text=km)
 
