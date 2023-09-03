@@ -1,43 +1,42 @@
 from tkinter import *
 
-# label = Label("This is the first label")
-# label.grid(row =1, column = 1)
-
-
 window = Tk()
 window.title("Widget Examples")
-window.minsize(width=500, height=500)
+window.minsize(width=350, height=250)
 
-label = Label(text="This is old text")
-label.grid(row =0, column = 0)
+label2 = Label(text="Miles")
+label2.grid(row =0, column = 3)
+
+label3 = Label(text="KM")
+label3.grid(row =1, column = 3)
+
+label = Label(text="")
+label.grid(row =0, column =0)
+#label.config(padx=10, pady=10)
+
+label1 = Label(text="is equal to")
+label1.grid(row =1, column = 1)
+
+
+entry = Entry(width=10)
+entry.insert(END, string="0")
+entry.grid(row = 0, column=2)
+entry = (entry.get())
+entry = int(entry)
+print(entry)
 
 
 def action():
-    print("Do something")
-
-# #calls action() when pressed
-# button = Button(text="Click Me", command=action)
-# button.pack()
+    miles = entry.get()
+    km = miles * 1.609
+    label4.config(text=km)
 
 
-button = Button(text="Click me", command=action())
-button.grid(row= 1, column = 1)
+button = Button(text="Calculate", command=action)
+button.grid(row=2, column=2)
 
-button_2 = Button(text="Click me new", command = action())
-button_2.grid(row = 0, column = 2)
-
-# #Entries
-# entry = Entry(width=30)
-# #Add some text to begin with
-# entry.insert(END, string="Some text to begin with.")
-# #Gets text in entry
-# print(entry.get())
-# entry.pack()
-
-entry = Entry(width=10)
-entry.insert(END, string="Some text here bro")
-print(entry.get())
-entry.grid(row = 2, column=3)
+label4 = Label(text="0")
+label4.grid(column=2, row=1)
 
 
 window.mainloop()
