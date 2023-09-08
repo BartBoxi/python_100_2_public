@@ -9,6 +9,11 @@ WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 
+#----------------------------Upload image------------------------------  #
+
+
+
+
 # ---------------------------- TIMER RESET ------------------------------- # 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
@@ -17,9 +22,13 @@ LONG_BREAK_MIN = 20
 
 # ---------------------------- UI SETUP ------------------------------- #
 
-window = tk()
+window = Tk()
 window.title("Pomodoro")
+window.minsize(width=500, height=500)
+img = PhotoImage(file="tomato.png")
 
-
+#Create a label for the image
+my_label = Label(window, image=img)
+my_label.place(x=0, y=0, relwidth=1, relheight=1)
 window.mainloop()
 
