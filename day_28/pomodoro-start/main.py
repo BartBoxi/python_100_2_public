@@ -9,10 +9,11 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 25
-SHORT_BREAK_MIN = 5
+WORK_MIN = 5
+SHORT_BREAK_MIN = 1
 LONG_BREAK_MIN = 20
-
+reps = 0
+timer = None
 #----------------------------Upload image------------------------------  #
 
 
@@ -33,15 +34,38 @@ LONG_BREAK_MIN = 20
 #
 #
 # # ---------------------------- TIMER RESET ------------------------------- #
-#
+
+def reset_timer():
+    window.after_cancel(timer)
+    canvas.itemconfig(counter_text, text="00:00")
+    label.config(text="Timer")
+    label2.config(text="")
+
+
 # # ---------------------------- TIMER MECHANISM ------------------------------- #
 
 
 def start():
-    count_down(5 * 60)
+    global reps
+    reps += 1
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
+
+    if reps % 2 != 0:
+        count_down(work_sec)
+        label.config(text="Work", font=("Courier", 45), bg="#808000", fg="#e2979c")
+    elif reps % 8 == 0:
+        count_down(long_break_sec)
+        label.config(text="Long Break", font=("Courier", 45), bg="#808000", fg="#9bdeac")
+    elif reps % 2 == 0:
+        count_down(short_break_sec)
+        label.config(text="Short Break", font=("Courier", 45), bg="#808000", fg="#f7f5dd")
+
+
 
 def stop():
-    pass
+    reset_timer()
 
 
 # # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
@@ -54,7 +78,18 @@ def count_down(count):
 
     canvas.itemconfig(counter_text, text=f"{count_min}:{count_sec}")
     if count > 0:
-        window.after(1000, count_down, count - 1)
+        global timer
+        timer = window.after(1000, count_down, count - 30)
+    else:
+        start()
+        mark = ""
+        work_session = math.floor(reps/2)
+        for _ in range(work_session):
+            mark += "✓"
+        label2.config(text=mark)
+
+
+
 
 
 # def countdown_timer(minutes):
@@ -86,7 +121,7 @@ label.grid(row = 0, column=1)
 
 
 
-label2 = Label(text="✓", font=("Courier", 20), bg="#808000")
+label2 = Label(font=("Courier", 20), bg="#808000", fg="#221123")
 label2.grid(row = 3, column=1)
 
 
