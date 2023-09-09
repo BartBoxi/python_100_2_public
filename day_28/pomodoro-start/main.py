@@ -40,6 +40,8 @@ def reset_timer():
     canvas.itemconfig(counter_text, text="00:00")
     label.config(text="Timer")
     label2.config(text="")
+    global reps
+    reps = 0
 
 
 # # ---------------------------- TIMER MECHANISM ------------------------------- #
