@@ -23,23 +23,39 @@ window.config(padx=20, pady=20)
 #Website label
 
 website_label = Label(text="Website",font=("Courier", 25))
-website_label.grid(column = 0, row=2)
+website_label.grid(column = 0, row=1)
 
 #Website entry
 
-entery = Entry
+webstite_entry = Entry(width = 35 )
+webstite_entry.grid(column=1, row=1, columnspan=2)
 
 
 email_label = Label(text="Email/Username",font=("Courier", 25))
 email_label.grid(column=0, row=3)
 
+#email entry
+
+email_entry = Entry(width = 35 )
+email_entry.grid(column=1, row=3, columnspan=2)
+
 password_label = Label(text="Password",font=("Courier", 25))
 password_label.grid(column=0, row=4)
 
+#password entry
+
+pass_entry = Entry(width = 21)
+pass_entry.grid(column=1, row=4)
+
+def pass_generation():
+    return 0
+
+pass_button = Button(text="Generate Password", command=pass_generation, width=15)
+pass_button.grid(column =2, row=4)
 
 
-button_add = Button(text="Add", command = add)
-button_add.grid(column=1, row = 5, columnspan=2)
+button_add = Button(text="Add", command = add, width=36)
+button_add.grid(column=1, row = 5, columnspan=3)
 
 
 
