@@ -10,6 +10,9 @@ def add():
     email = email_entry.get()
     password = pass_entry.get()
 
+    if len(website) == 0 or len(password) ==0:
+        messagebox.showinfo(title="Oops", message="Please make sure you haven't left any fields empty.")
+
     is_ok =messagebox.askokcancel(title= "Title", message=f"These are the details that you entered \n Email:{email} \n "
                                                    f"Website:{website} \n "
                                                    f"Password: {password} \n"
