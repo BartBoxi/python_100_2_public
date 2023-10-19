@@ -12,16 +12,16 @@ def add():
 
     if len(website) == 0 or len(password) ==0:
         messagebox.showinfo(title="Oops", message="Please make sure you haven't left any fields empty.")
-
-    is_ok =messagebox.askokcancel(title= "Title", message=f"These are the details that you entered \n Email:{email} \n "
-                                                   f"Website:{website} \n "
-                                                   f"Password: {password} \n"
-                                                   f"Is it okay to save?")
-    if is_ok:
-        with open("saved_password.txt", "a") as data_file:
-            data_file.write(f"{website} | {email} | {password}\n")
-            website_entry.delete(0, END)
-            pass_entry.delete(0, END)
+    else:
+        is_ok =messagebox.askokcancel(title= "Title", message=f"These are the details that you entered \n Email:{email} \n "
+                                                       f"Website:{website} \n "
+                                                       f"Password: {password} \n"
+                                                       f"Is it okay to save?")
+        if is_ok:
+            with open("saved_password.txt", "a") as data_file:
+                data_file.write(f"{website} | {email} | {password}\n")
+                website_entry.delete(0, END)
+                pass_entry.delete(0, END)
 
 
 
