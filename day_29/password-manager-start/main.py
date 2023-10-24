@@ -27,8 +27,7 @@ def pass_generator():
 
     password = "".join(password_list)
 
-    print(f"Your password is: {password}")
-
+    pass_entry.insert(0, password)
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 def add():
@@ -91,8 +90,9 @@ password_label.grid(column=0, row=4)
 
 #password entry
 
-pass_entry = Entry(width = 21)
+pass_entry = Entry(width=21)
 pass_entry.grid(column=1, row=4)
+
 
 
 def pass_generation():
@@ -100,6 +100,8 @@ def pass_generation():
 
 pass_button = Button(text="Generate Password", command=pass_generation, width=15)
 pass_button.grid(column =2, row=4)
+
+
 
 
 button_add = Button(text="Add", command = add, width=36)
