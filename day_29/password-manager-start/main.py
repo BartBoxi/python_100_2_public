@@ -31,6 +31,12 @@ def pass_generator():
 
     pass_entry.insert(0, password)
     pyperclip.copy(password)
+
+
+
+
+
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 def add():
@@ -68,6 +74,12 @@ def add():
             finally:
                 website_entry.delete(0, END)
                 pass_entry.delete(0, END)
+#------------------------------Search Button---------------------------------#
+
+def find_password(website, "saved_password.json"):
+    with open("saved_password.json", "r") as data_file:
+        json_data = json.load(data_file)
+    return website in data_file.values()
 
 
 
@@ -91,8 +103,8 @@ website_label = Label(text="Website",font=("Courier", 25))
 website_label.grid(column = 0, row=1)
 
 #Website entry
-
-website_entry = Entry(width = 35)
+#adjust the layout and the other widgets as needed to get the desired look
+website_entry = Entry(width = 21)
 website_entry.grid(column=1, row=1, columnspan=2)
 website_entry.focus()
 
@@ -122,12 +134,13 @@ def pass_generation():
 pass_button = Button(text="Generate Password", command=pass_generation, width=15)
 pass_button.grid(column =2, row=4)
 
-
-
-
 button_add = Button(text="Add", command = add, width=36)
 button_add.grid(column=1, row = 5, columnspan=3)
 
+
+#add a search button next to the website entry field
+button_search = Button(text="Search", command = find_password, width=15)
+button_search.grid(column = 2, row = 1)
 
 
 
