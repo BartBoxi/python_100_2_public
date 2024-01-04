@@ -76,10 +76,18 @@ def add():
                 pass_entry.delete(0, END)
 #------------------------------Search Button---------------------------------#
 
-def find_password(website, "saved_password.json"):
+def find_password():
+    website = website_entry.get()
     with open("saved_password.json", "r") as data_file:
-        json_data = json.load(data_file)
-    return website in data_file.values()
+        data = json.load(data_file)
+
+    data_dict = dict(data)
+    print(data_dict)
+    if website in data_dict.keys():
+        password_for_website = data_dict[website]['password']
+        messagebox.showinfo(title="Saved password", message=f'This website {website} is already here and password is {password_for_website}')
+    else:
+        messagebox.showinfo(title="Opps#2", message=f'This website {website} is not here. So please add it')
 
 
 
