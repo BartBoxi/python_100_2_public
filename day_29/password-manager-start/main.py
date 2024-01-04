@@ -85,7 +85,7 @@ def find_password():
         messagebox.showinfo(title="File not found", message="File not found. Create one before searching for saved passes")
     else:
         data_dict = dict(data)
-        print(data_dict)
+        #print(data_dict)
         if website in data_dict.keys():
             password_for_website = data_dict[website]['password']
             messagebox.showinfo(title="Saved password", message=f'This website {website} is already here and password is {password_for_website}')
