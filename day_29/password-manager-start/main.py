@@ -78,20 +78,19 @@ def add():
 
 def find_password():
     website = website_entry.get()
-    with open("saved_password.json", "r") as data_file:
-        data = json.load(data_file)
-
-    data_dict = dict(data)
-    print(data_dict)
-    if website in data_dict.keys():
-        password_for_website = data_dict[website]['password']
-        messagebox.showinfo(title="Saved password", message=f'This website {website} is already here and password is {password_for_website}')
+    try:
+        with open("saved_password.json", "r") as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showinfo(title="File not found", message="File not found. Create one before searching for saved passes")
     else:
-        messagebox.showinfo(title="Opps#2", message=f'This website {website} is not here. So please add it')
-
-
-
-
+        data_dict = dict(data)
+        print(data_dict)
+        if website in data_dict.keys():
+            password_for_website = data_dict[website]['password']
+            messagebox.showinfo(title="Saved password", message=f'This website {website} is already here and password is {password_for_website}')
+        else:
+            messagebox.showinfo(title="Opps#2", message=f'This website {website} is not here. So please add it')
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -112,8 +111,8 @@ website_label.grid(column = 0, row=1)
 
 #Website entry
 #adjust the layout and the other widgets as needed to get the desired look
-website_entry = Entry(width = 21)
-website_entry.grid(column=1, row=1, columnspan=2)
+website_entry = Entry(width = 20)
+website_entry.grid(column=1, row=1, columnspan=1)
 website_entry.focus()
 
 
@@ -122,8 +121,8 @@ email_label.grid(column=0, row=3)
 
 #email entry
 
-email_entry = Entry(width = 35 )
-email_entry.grid(column=1, row=3, columnspan=2)
+email_entry = Entry(width = 38 )
+email_entry.grid(column=1, row=3, columnspan=3)
 email_entry.insert(0, "bartoszpudlo07@gmail.com")
 
 password_label = Label(text="Password",font=("Courier", 25))
@@ -142,7 +141,7 @@ def pass_generation():
 pass_button = Button(text="Generate Password", command=pass_generation, width=15)
 pass_button.grid(column =2, row=4)
 
-button_add = Button(text="Add", command = add, width=36)
+button_add = Button(text="Add", command = add, width=38)
 button_add.grid(column=1, row = 5, columnspan=3)
 
 
