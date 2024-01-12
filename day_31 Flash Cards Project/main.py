@@ -1,5 +1,6 @@
 BACKGROUND_COLOR = "#B1DDC6"
-
+import csv
+import os
 from tkinter import *
 import pandas as pd
 import random
@@ -13,13 +14,28 @@ current_card = {}
 
 
 def next_card():
-    global current_card, flip_timer
+    global current_card
+    global flip_timer
+    words_to_learn =  []
     window.after_cancel(flip_timer)
     current_card = random.choice(to_learn)
     canvas.itemconfig(card_title, text ="French", fill="black")
     canvas.itemconfig(card_word, text = current_card["French"], fill="black")
     canvas.itemconfig(canvas_image, image=card_front)
     flip_timer = window.after(3000, func=flip_card)
+    words_to_learn.update(current_card)
+    df = pd.DataFrame(words_to_learn)
+
+    if not os.path.exists("words_to_learn.csv"):
+        df.to_csv("words_to_learn.csv", index=False)
+    else:
+        df=pd.read_csv("words_to_learn.csv")
+        new_df=pd.DataFrame(current_card)
+        df = df.append(new_df, ignore_index=True)
+        df.to_csv("words_to_learn.csv", index=False)
+
+
+
 
 
 
@@ -29,10 +45,14 @@ def flip_card():
     canvas.itemconfig(card_title, text="English", fill="white")
     canvas.itemconfig(card_word, text=current_card["English"], fill="white")
 
-# def next_french_word():
-#     current_card = random.choice(to_learn)
-#     canvas.itemconfig(card_word, text=current_card["French"])
-#     #if next_card()
+def good_word():
+    global flip_timer
+    current_card = random.choice(to_learn)
+    canvas.itemconfig(card_title, text="French", fill="black")
+    canvas.itemconfig(card_word, text=current_card["French"], fill="black")
+    canvas.itemconfig(canvas_image, image=card_front)
+    flip_timer = window.after(3000, func=flip_card)
+    to_learn.remove(current_card)
 
 # TODO: add functionaly when from next french card im going to next card to show first the translation of uknown word
 #---------------------------------DATA---------------------------------#
@@ -63,7 +83,7 @@ wrong = PhotoImage(file="/Users/bartoszpudlo/PycharmProjects/python_100_2/day_31
 unknown_button = Button(image=wrong, highlightthickness=0, command = next_card)
 unknown_button.grid(row=1, column=0)
 
-good_button = Button(image=right, highlightthickness=0, command= next_card)
+good_button = Button(image=right, highlightthickness=0, command= good_word)
 good_button.grid(row=1, column=1)
 
 next_card()
