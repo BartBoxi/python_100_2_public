@@ -86,6 +86,4 @@ unknown_button.grid(row=1, column=0)
 good_button = Button(image=right, highlightthickness=0, command= good_word)
 good_button.grid(row=1, column=1)
 
-next_card()
-
 window.mainloop()
