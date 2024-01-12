@@ -9,12 +9,12 @@ to_learn = data.to_dict(orient='records')
 
 def next_card():
     current_card = random.choice(to_learn)
-    canvas.itemconfig(card_title, text = current_card["French"])
-    canvas.itemconfig(card_word, text = current_card["English"])
+    canvas.itemconfig(card_title, text ="French")
+    canvas.itemconfig(card_word, text = current_card["French"])
 
 def next_french_word():
     current_card = random.choice(to_learn)
-    canvas.itemconfig(card_title, text=current_card["French"])
+    canvas.itemconfig(card_word, text=current_card["French"])
     #if next_card()
 
 # TODO: add functionaly when from next french card im going to next card to show first the translation of uknown word
@@ -45,5 +45,6 @@ unknown_button.grid(row=1, column=0)
 good_button = Button(image=right, highlightthickness=0, command= next_french_word)
 good_button.grid(row=1, column=1)
 
+next_card()
 
 window.mainloop()
