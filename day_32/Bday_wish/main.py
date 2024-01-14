@@ -1,4 +1,4 @@
-#
+#how to send an email
 # import smtplib
 #
 # my_email = "pythonbarttest@gmail.com"
