@@ -3,7 +3,6 @@ import random
 import smtplib
 import datetime as dt
 import pandas as pd
-import random as rd
 
 now = dt.datetime.now()
 today = now.date()
@@ -28,38 +27,30 @@ if (today_month, today_day) in birthday_dict:
     if letter_number == 1:
         with open('letter_templates/letter_1.txt', 'r') as file:
             content = file.read()
-            content = content.replace("[Name]", name)
-        with open('letter_templates/letter_1.txt', 'a+') as file:
+            content = content.replace("[NAME]", name)
+        with open('letter_templates/letter_1.txt', 'w') as file:
             file.write(content)
-
-
     elif letter_number ==2:
         with open('letter_templates/letter_2.txt', 'r') as file:
             content = file.read()
             content = content.replace("[NAME]", name)
-        with open('letter_templates/letter_2.txt', 'a+') as file:
+        with open('letter_templates/letter_2.txt', 'w') as file:
             file.write(content)
-
-
     elif letter_number ==3:
         with open('letter_templates/letter_3.txt', 'r') as file:
             content = file.read()
-            content = content.replace("[Name]", name)
-        with open('letter_templates/letter_3.txt', 'a+') as file:
+            content = content.replace("[NAME]", name)
+        with open('letter_templates/letter_3.txt', 'w') as file:
             file.write(content)
-
-
-
-def send_email():
-    my_email = "pythonbarttest@gmail.com"
-    password = "udyd dkwa cost ydqy"
-    with smtplib.SMTP("smtp.gmail.com") as connection:
-        connection.starttls()
-        connection.login(user=my_email, password=password)
-        connection.sendmail(from_addr=my_email, to_addrs={email},
-                            msg=f'Subject:Happy Birthday\n\n{content}.')
-
-send_email()
+    def send_email():
+        my_email = "pythonbarttest@gmail.com"
+        password = "udyd dkwa cost ydqy"
+        with smtplib.SMTP("smtp.gmail.com") as connection:
+            connection.starttls()
+            connection.login(user=my_email, password=password)
+            connection.sendmail(from_addr=my_email, to_addrs={email},
+                                msg=f'Subject:Happy Birthday\n\n{content}.')
+    send_email()
 
 
 
