@@ -15,7 +15,7 @@ data = pd.read_csv("birthdays.csv")
 birthday_dict = {(data_row["month"], data_row["day"]): (f"{data_row["name"]},{data_row["email"]},{data_row["year"]},"
                                                         f"{data_row["month"]}, {data_row["day"]}")
                                                         for (index, data_row) in data.iterrows()}
-#print(birthday_dict)
+print(birthday_dict)
 
 if (today_month, today_day) in birthday_dict:
     today_birthday_info = birthday_dict[(today_month, today_day)]
