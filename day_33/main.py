@@ -26,6 +26,8 @@ sunrise = data["results"]["sunrise"]
 sunset = data["results"]["sunset"]
 
 time_now = datetime.now()
-print(time_now)
 
-print(sunset, sunrise)
+
+print(sunrise.split("T")[1].split(":")[0], sunset.split("T")[1].split(":")[0])
+
+print(time_now.hour)
