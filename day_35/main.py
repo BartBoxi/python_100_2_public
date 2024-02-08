@@ -2,6 +2,8 @@ from twilio.rest import Client
 import requests
 
 endpoint = "http://api.openweathermap.org/data/2.5/forecast"
+account_sid = "AC26f5e5d16942bb5e431ab1c151b54b58"
+auth_token = "a231819d5f6ccf6a4b7a65a4f3d24193"
 weather_param = {
     "appid": "fe4710a7303b544c44b9c3041b99d647",
     "q": "Warsaw",
@@ -39,4 +41,11 @@ for i in pogoda:
         will_rain = True
 
 if will_rain:
-    print("Bring an umbrella")
+    client = Client(account_sid, auth_token)
+    message = client.messages \
+        .create(
+        body='It is going to rain today. Remember to bring an ☂️ ',
+        from_="+17867131656",
+        to= "+48531305974"
+    )
+
