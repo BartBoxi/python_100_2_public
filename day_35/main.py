@@ -2,11 +2,11 @@ from twilio.rest import Client
 import requests
 
 endpoint = "http://api.openweathermap.org/data/2.5/forecast"
-account_sid = "AC26f5e5d16942bb5e431ab1c151b54b58"
-auth_token = "a231819d5f6ccf6a4b7a65a4f3d24193"
+account_sid = "AC02bd74d61a154c1a7f0e4f74009be531"
+auth_token = "3eab32ec09702538108fd3c2421d8bee"
 weather_param = {
     "appid": "fe4710a7303b544c44b9c3041b99d647",
-    "q": "Warsaw",
+    "q": "Gdansk",
     "cnt": 4
 }
 response = requests.get(endpoint, params=weather_param)
@@ -45,7 +45,7 @@ if will_rain:
     message = client.messages \
         .create(
         body='It is going to rain today. Remember to bring an ☂️ ',
-        from_="+17867131656",
+        from_="+16185911150",
         to= "+48531305974"
     )
-
+    print(message.status)
