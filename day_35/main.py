@@ -6,7 +6,7 @@ account_sid = "AC02bd74d61a154c1a7f0e4f74009be531"
 auth_token = "3eab32ec09702538108fd3c2421d8bee"
 weather_param = {
     "appid": "fe4710a7303b544c44b9c3041b99d647",
-    "q": "Gdansk",
+    "q": "Warsaw",
     "cnt": 4
 }
 response = requests.get(endpoint, params=weather_param)
