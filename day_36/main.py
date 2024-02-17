@@ -66,13 +66,30 @@ param2 = {
 
 news = requests.get(NEWS_ENDPOINT, params=param2)
 data2 = news.json()
-articles = data2["articles"][0]['title']
-articles2 = data2["articles"][1]['title']
-articles3 = data2["articles"][2]['title']
-print(data2)
-print(articles)
-print(articles2)
-print(articles3)
+get_news = []
+# get_news = [article['title'] for article in data2["articles"]]
+# get_news += [article['description'] for article in data2["articles"]]
+# print(get_news)
+
+
+# articles = data2["articles"][0]['title']
+# articles_d = data2["articles"][0]['description']
+# get_news.append(articles)
+# get_news.append(articles_d)
+# articles2 = data2["articles"][1]['title']
+# articles2_d = data2["articles"][1]['description']
+# get_news.append(articles2)
+# get_news.append(articles2_d)
+# articles3 = data2["articles"][2]['title']
+# articles3_d = data2["articles"][2]['description']
+# get_news.append(articles3)
+# get_news.append(articles3_d)
+#
+# print(data2)
+# print(articles)
+# print(articles2)
+# print(articles3)
+# print(get_news)
     ## STEP 2: https://newsapi.org/
     # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME.
 
@@ -86,8 +103,13 @@ print(articles3)
 
 #TODO 8. - Create a new list of the first 3 article's headline and description using list comprehension.
 
+articles_headline_description = [(article['title'], article['description']) for article in data2["articles"][:3]]
+print(articles_headline_description)
+
 #TODO 9. - Send each article as a separate message via Twilio.
 
+articles_headline_description = articles_headline_description[0]
+print(articles_headline_description)
 
 
 #Optional TODO: Format the message like this:
