@@ -29,7 +29,7 @@ param = {
 
 r = requests.get(STOCK_ENDPOINT, params=param)
 data = r.json()
-print(data)
+#print(data)
 
     ## STEP 1: Use https://www.alphavantage.co/documentation/#daily
 # When stock price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
@@ -37,10 +37,23 @@ print(data)
 # #TODO 1. - Check last refreshed date. if it is not like yesterday - then take last refreshed date and compare price czyli t
 # TODO - traktuj jako wczoraj date i pobierz z tego dane
 
-yesterday = data["Time Series (Daily)"][f'{yesterday_date}']['4. close']
-yesterday = float(yesterday)
+yesterday = None
+refreshed = data['Meta Data']['3. Last Refreshed']
+
+if refreshed == str(yesterday_date):
+    yesterday = data["Time Series (Daily)"][str(yesterday_date)]['4. close']
+elif refreshed == str(day_before):
+    yesterday = data["Time Series (Daily)"][str(day_before)]['4. close']
+    day_before = day_before - timedelta(1)
+
+if yesterday is not None:
+    yesterday = float(yesterday)
+    #print(yesterday)
+else:
+    print("Error: Yesterday's data not available")
+
 print(yesterday)
-#
+
 # #TODO 2. - Get the day before yesterday's closing stock price
 #
 two_day_before = data["Time Series (Daily)"][f'{day_before}']['4. close']
@@ -52,13 +65,13 @@ print(two_day_before)
 #
 difference = yesterday - two_day_before
 difference = abs(difference)
-print(difference)
+#print(difference)
 # #TODO 4. - Work out the percentage difference in price between closing price yesterday and closing price the
 # # day before yesterday.
 #
 
 percent = round(((yesterday - two_day_before)/two_day_before * 100),2)
-print(percent)
+#print(percent)
 
 #TODO 5. - If TODO4 percentage is greater than 5 then print("Get News").
 if percent > 5:
