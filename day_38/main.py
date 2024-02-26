@@ -17,3 +17,5 @@ endpoint = f"{url}/{excercise}"
 excercise_put = requests.put(url=endpoint, headers=headers)
 print(excercise_put.text)
 print(excercise_put.json)
+
+#docs used for this api https://docx.syndigo.com/developers/docs/natural-language-for-exercise?highlight=nutritionix%20excercies
