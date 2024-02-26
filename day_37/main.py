@@ -42,14 +42,26 @@ print(graph_config["id"])
 
 graph = graph_config["id"]
 
-pixel_update_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{graph}"
-print(pixel_update_endpoint)
+pixel_insert_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{graph}"
+print(pixel_insert_endpoint)
 
 pixel_update = {
     "date":TODAY,
-    "quantity":"50",
+    "quantity":"12120",
 }
 
-pixel = requests.post(url=pixel_update_endpoint, json=pixel_update, headers=headers)
+pixel = requests.post(url=pixel_insert_endpoint, json=pixel_update, headers=headers)
 print(pixel.text)
+
+pixel_change_params = {
+    "quantity":"1"
+}
+
+data_to_change = input("Which date you want to change")
+
+pixel_change_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{graph}/{data_to_change}"
+pixel_change = requests.put(url=pixel_change_endpoint, json=pixel_change_params, headers=headers)
+print(pixel_change.text)
+
+
 
