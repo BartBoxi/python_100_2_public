@@ -52,3 +52,4 @@ pixel_update = {
 
 pixel = requests.post(url=pixel_update_endpoint, json=pixel_update, headers=headers)
 print(pixel.text)
+
