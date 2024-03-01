@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 APP_ID = "024a7bf0"
 API_KEY = "cd9678b13f4b908b97e0c13f75672ccc"
@@ -32,3 +33,15 @@ result = excercise_put.json()
 print(result)
 
 #docs used for this api https://docx.syndigo.com/developers/docs/natural-language-for-exercise?highlight=nutritionix%20excercies
+
+sheety_url = "https://api.sheety.co/c5294e1cd882deb45fb05bdb1c1640b8/myWorkouts/workouts"
+
+today = datetime.today()
+today = today.strftime("%Y-%m-%d")
+time = datetime.now()
+time = time.strftime("%H:%M:%S")
+
+workout = {
+    "Date": today,
+
+}
