@@ -28,41 +28,39 @@ parameters = {
 }
 
 excercise_put = requests.post(url=excercise_endpoint, json=parameters, headers=headers)
-print(excercise_put)
-excercise_put.raise_for_status()
 result = excercise_put.json()
-duration = result['exercises'][0]['duration_min']
-calories = result['exercises'][0]['nf_calories']
-result = result['exercises'][0]['user_input']
 print(result)
 
 # docs used for this api https://docx.syndigo.com/developers/docs/natural-language-for-exercise?highlight=nutritionix%20excercies
 
-sheety_url = "https://api.sheety.co/c5294e1cd882deb45fb05bdb1c1640b8/myWorkouts/workouts"
+sheety_url = "https://api.sheety.co/c5294e1cd882deb45fb05bdb1c1640b8/bart/arkusz1"
+
+
+
+###STEP 4###
 
 today = datetime.today()
-today = today.strftime("%Y-%m-%d")
+today = today.strftime("%d/%m/%Y")
 time = datetime.now()
-time = time.strftime("%H:%M:%S")
+time = time.strftime("%X")
 
-workouts = {
-    "workouts": {
-        "Date": today,
-        "Time": time,
-        "Exercise": result,
-        "Duration": duration,
-        "Calories": calories,
+for exercise in result["exercises"]:
+    sheet_inputs = {
+        "arkusz1": {
+            "date": today,
+            "time": time,
+            "exercise": exercise["name"].title(),
+            "duration": exercise["duration_min"],
+            "calories": exercise["nf_calories"]
+        }
     }
-}
 
-headers = {
-    'Content-Type': 'application/json'
-}
 
-response = requests.post(url=sheety_url, headers=headers, data=json.dumps(workouts))
+    response = requests.post(url=sheety_url, json=sheet_inputs)
 
-if response.status_code == 200:
-    json_response = response.json()
-    print(json_response['workouts'])
-else:
-    print("Error", response.status_code)
+    if response.status_code == 200:
+        json_response = response.json()
+        print(json_response['arkusz1'])
+    else:
+        print("Error", response.status_code)
+    print(response.text)
