@@ -20,7 +20,7 @@ AGE = 27
 
 excercise_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
 
-excercise = input("Enter the excercise you did ")
+excercise = input("Enter the excercise you did - input should be excercies and duration 1 h or 1 m ")
 
 parameters = {
     "query": excercise,
