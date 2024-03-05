@@ -63,6 +63,7 @@ for exercise in result["exercises"]:
         "pass": PASS
     }
     #headers for authorization
+    #added just a header
     headers_sheety = {"Authorization":"Basic YmFydDpNZW5hY29yKiExOTk2"}
 
     response = requests.post(url=sheety_url, json=sheet_inputs, headers=headers_sheety)
