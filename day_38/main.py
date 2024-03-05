@@ -2,8 +2,11 @@ import requests
 from datetime import datetime
 import json
 
+
 APP_ID = "024a7bf0"
 API_KEY = "cd9678b13f4b908b97e0c13f75672ccc"
+USER = "bart"
+PASS = "Menacor*!1996"
 
 headers = {
     "x-app-id": APP_ID,
@@ -55,8 +58,14 @@ for exercise in result["exercises"]:
         }
     }
 
+    basic = {
+        "user": USER,
+        "pass": PASS
+    }
+    #headers for authorization
+    headers_sheety = {"Authorization":"Basic YmFydDpNZW5hY29yKiExOTk2"}
 
-    response = requests.post(url=sheety_url, json=sheet_inputs)
+    response = requests.post(url=sheety_url, json=sheet_inputs, headers=headers_sheety)
 
     if response.status_code == 200:
         json_response = response.json()
@@ -64,3 +73,6 @@ for exercise in result["exercises"]:
     else:
         print("Error", response.status_code)
     print(response.text)
+
+
+
