@@ -1,12 +1,15 @@
+import os
+
 import requests
 from datetime import datetime
 import json
+import os
 
 
-# APP_ID = "024a7bf0"
-# API_KEY = "cd9678b13f4b908b97e0c13f75672ccc"
-# USER = "bart"
-# PASS = "Menacor*!1996"
+APP_ID = os.environ.get("APP_ID")
+API_KEY = os.environ.get("API_KEY")
+USER = os.environ.get("USER")
+PASS = os.environ.get("PASS")
 
 headers = {
     "x-app-id": APP_ID,
