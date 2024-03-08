@@ -6,10 +6,12 @@ import json
 import os
 
 
-APP_ID = os.environ.get("APP_ID")
-API_KEY = os.environ.get("API_KEY")
-USER = os.environ.get("USER")
-PASS = os.environ.get("PASS")
+APP_ID = os.environ["APP_ID"]
+API_KEY = os.environ["API_KEY"]
+# APP_ID = "024a7bf0"
+# API_KEY = "cd9678b13f4b908b97e0c13f75672ccc"
+USER = os.environ["USER"]
+PASS = os.environ["PASS"]
 
 headers = {
     "x-app-id": APP_ID,
