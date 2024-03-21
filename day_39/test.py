@@ -29,7 +29,10 @@ data = response.json()
 print(data)
 
 city_id_list = [(item['city'], item['id']) for item in data['prices']]
-print(city_id_list)
+
+# for i in city_id_list:
+#     city_name = city_id_list[0]
+# print(city_id_list)
 
 # city = data['prices'][0]['city']
 # id = data['prices'][0]['id']
@@ -44,24 +47,25 @@ cities = {
     "Kuala Lumpur": "KUL",
     "New York": "NYC",
     "San Francisco": "SFO",
-    "Cape Town": "CPT"
+    "Cape Town": "CPT",
+    "Frankfurt":"FRK"
 }
-
-
-city = 'Warsaw'
-if city in cities:
-    sheety_url = "https://api.sheety.co/c5294e1cd882deb45fb05bdb1c1640b8/flightDeals/prices/"
-    id = id
-    data = {
-        "price": {
-            "iataCode": cities[city]
-    }
-    }
-    headers_sheety = {"Authorization": "Basic YmFydDpNZW5hY29yKiExOTk2"}
-    endpoint = f"{sheety_url}/{id}"
-    response = requests.put(url=endpoint, json=data, headers=headers_sheety)
-else:
-    print("error")
+global city
+for city_tuple in city_id_list:
+    city = city_tuple[0]
+    id = city_tuple[1]
+    if city in cities:
+        sheety_url = "https://api.sheety.co/c5294e1cd882deb45fb05bdb1c1640b8/flightDeals/prices/"
+        data = {
+            "price": {
+                "iataCode": cities[city]
+        }
+        }
+        headers_sheety = {"Authorization": "Basic YmFydDpNZW5hY29yKiExOTk2"}
+        endpoint = f"{sheety_url}/{id}"
+        response = requests.put(url=endpoint, json=data, headers=headers_sheety)
+    else:
+        print("error")
 
 
 
