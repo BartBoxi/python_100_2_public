@@ -22,11 +22,32 @@ import json
 # print(flights_data)
 
 
+global sheety_url
 sheety_url = "https://api.sheety.co/c5294e1cd882deb45fb05bdb1c1640b8/flightDeals/prices/"
+def __init__(self):
+    self.destination_data = {}
+def get_destination_data(self):
+    response = requests.get(url=sheety_url)
+    data = response.json()
+    self.destination_data = data["prices"]
+    return self.destination_data
 
-response = requests.get(url=sheety_url)
-data = response.json()
-print(data)
+def update_destination_codes(self):
+    for city in self.desitation_data:
+        new_data = {
+            "price":{
+                "iataCode": city["iataCode"]
+            }
+        }
+        response = requests.put(
+            url=f"{sheety_url}/{city['id']}",
+            json = new_data
+        )
+        print(response.text)
+
+
+
+
 
 city_id_list = [(item['city'], item['id']) for item in data['prices']]
 
@@ -39,13 +60,9 @@ for city_tuple in city_id_list:
     }
     parameters = {
         "term":city}
-
     IATA = requests.get(url=url, headers=headers, params=parameters)
-    iata = json.loads(IATA)
-    for location in iata['location']:
-        global code
-        code = location['code']
-    print(code)
+    data = IATA.json()
+    self.desitation_data = data
     print(IATA.status_code)
     print(IATA.text)
     print(IATA.json())

@@ -1,49 +1,33 @@
 import requests
+from pprint import pprint
+
+global sheety_url
+sheety_url = "https://api.sheety.co/c5294e1cd882deb45fb05bdb1c1640b8/flightDeals/prices/"
 
 class DataManager:
-    #This class is responsible for talking to the Google Sheet.
-    sheety_url = "https://api.sheety.co/c5294e1cd882deb45fb05bdb1c1640b8/flightDeals/prices/"
 
-    response = requests.get(url=sheety_url)
-    data = response.json()
-    print(data)
+    def __init__(self):
+        self.destination_data = {}
+    def get_destination_data(self):
+        response = requests.get(url=sheety_url)
+        data = response.json()
+        self.destination_data = data["prices"]
+        return self.destination_data
 
-    city_id_list = [(item['city'], item['id']) for item in data['prices']]
 
-    cities = {
-        "Warsaw": "WAW",
-        "Berlin": "BER",
-        "Tokyo": "TYO",
-        "Sydney": "SYD",
-        "Istanbul": "IST",
-        "Kuala Lumpur": "KUL",
-        "New York": "NYC",
-        "San Francisco": "SFO",
-        "Cape Town": "CPT",
-        "Frankfurt": "FRK",
-        "Krakow": "KRK",
-        "Amsterdam":"AMS",
-        "New York City": "JFK"
-    }
-    global city
-    for city_tuple in city_id_list:
-        city = city_tuple[0]
-        id = city_tuple[1]
-        if city in cities:
-            sheety_url = "https://api.sheety.co/c5294e1cd882deb45fb05bdb1c1640b8/flightDeals/prices/"
-            data = {
-                "price": {
-                    "iataCode": cities[city]
+    def update_destination_codes(self):
+        for city in self.desitation_data:
+            new_data = {
+                "price":{
+                    "iataCode": city["iataCode"]
                 }
             }
-            headers_sheety = {"Authorization": "Basic YmFydDpNZW5hY29yKiExOTk2"}
-            endpoint = f"{sheety_url}/{id}"
-            response = requests.put(url=endpoint, json=data, headers=headers_sheety)
-            print(response.status_code)
+            response = requests.put(
+                url=f"{sheety_url}/{city['id']}",
+                json = new_data
+            )
             print(response.text)
-        else:
-            print("error")
-DataManager()
+
 
 
 
