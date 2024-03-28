@@ -1,8 +1,8 @@
 import requests
 from datetime import datetime, timedelta
 
-USERNAME = "bartob"
-TOKEN = "123312fasasdv"
+USERNAME = "" #please update if u want  to use it
+TOKEN = "" #please update if u want  to use it 
 TODAY = datetime.now()
 TODAY = TODAY.strftime("%Y%m%d")
 

@@ -1,8 +1,8 @@
 #how to send an email
 # import smtplib
 #
-# my_email = "pythonbarttest@gmail.com"
-# password ="udyd dkwa cost ydqy"
+# my_email = "@gmail.com"
+# password =""
 # with smtplib.SMTP("smtp.gmail.com") as connection:
 #     connection.starttls()
 #     connection.login(user=my_email, password=password)

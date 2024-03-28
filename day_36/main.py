@@ -11,8 +11,8 @@ day_before = today - timedelta(2)
 # print(yesterday_date)
 # print(day_before)
 
-account_sid = "AC02bd74d61a154c1a7f0e4f74009be531"
-auth_token = "3eab32ec09702538108fd3c2421d8bee"
+account_sid = "" #please update if u want  to use it
+auth_token = "" #please update if u want  to use it
 
 client = Client(account_sid, auth_token)
 
@@ -22,7 +22,7 @@ COMPANY_NAME = "GOOGLE"
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 param = {
-    "apikey" : "V9KD8UMYO1T17R94",
+    "apikey" : "", #please update if u want  to use it
     "symbol" : "GOOGL",
     "function" : "TIME_SERIES_DAILY",
 }
@@ -78,7 +78,7 @@ if percent > 5:
     param2 = {
         "q" : "Google",
         "pageSize":3,
-        "apiKey":"11216ca89ed944398bf1d46963c196d9",
+        "apiKey":"", #please update if u want  to use it
         "sortBy":"popularity"
     }
 

@@ -5,7 +5,7 @@ import json
 # kiwi_search_url = "https://api.tequila.kiwi.com/v2/search"
 #
 # headers = {
-#     "apikey" : "QLYELueajtR5B7uG9le9s4MZ93Gj1w54"
+#     "apikey" : "" #please update if u want  to use it
 # }
 #
 # parameters = {
@@ -56,7 +56,7 @@ for city_tuple in city_id_list:
     id = city_tuple[1]
     url = "https://api.tequila.kiwi.com/locations/query"
     headers = {
-        "apikey" : "QLYELueajtR5B7uG9le9s4MZ93Gj1w54"
+        "apikey" : "" #please update if u want  to use it
     }
     parameters = {
         "term":city}

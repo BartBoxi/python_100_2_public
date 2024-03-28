@@ -8,8 +8,8 @@ import os
 
 APP_ID = os.environ["APP_ID"]
 API_KEY = os.environ["API_KEY"]
-# APP_ID = "024a7bf0"
-# API_KEY = "cd9678b13f4b908b97e0c13f75672ccc"
+# APP_ID = "" #please update if u want  to use it
+# API_KEY = "" #please update if u want  to use it
 USER = os.environ["USER"]
 PASS = os.environ["PASS"]
 
@@ -64,8 +64,8 @@ for exercise in result["exercises"]:
     }
 
     basic = {
-        "user": USER,
-        "pass": PASS
+        "user": USER, #please update if u want  to use it
+        "pass": PASS #please update if u want  to use it add as local variable 
     }
     #headers for authorization
     #added just a header
