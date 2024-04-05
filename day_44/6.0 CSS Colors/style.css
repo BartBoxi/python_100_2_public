@@ -1,3 +1,16 @@
 * {
     background-color: #faead6;
 }
+
+.box {
+    width: 500px;
+    height: 400px;
+    background-color: black ;
+  }
+
+#mainbox {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    
+}
