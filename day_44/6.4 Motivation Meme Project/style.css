@@ -1,0 +1,24 @@
+body{
+    background-color: black;
+}
+
+.box {
+    position: absolute;
+    width: 550px;
+    height: 400px;
+    background-color: white;
+    color: red;
+    top: 200px;
+    left: 20px;
+    padding: 10px;
+    
+  }
+
+h1 {
+    font-family: 'Libre Baskerville', serif;
+    color: green;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    text-align: center;
+}
