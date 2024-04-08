@@ -18,11 +18,19 @@ soup = BeautifulSoup(yc_web_page, "html.parser")
 print(soup.title)
 #article_tag = soup.find(name="span", class_="storylink")
 
-article_tag = soup.find("span", class_="titleline")
-article_text = article_tag.getText()
-article_link = article_tag.find('a')
-article_link = article_link.get("href")
+articles = article_tag = soup.find_all("span", class_="titleline") ###with find all we are scraping for
+# all 30 articles that are avaiable on the page
+texts = []
+links = []
+for article_tag in articles:
+    article_text = article_tag.getText()
+    texts.append(article_text)
+    article_link = article_tag.find('a')
+    article_link = article_link.get("href")
+    links.append(article_link)
 
-print(article_tag)
+#print(article_tag)
 print(article_text)
 print(article_link)
+print(texts)
+print(links)
