@@ -12,12 +12,18 @@ driver = webdriver.Chrome(options=chrome_options)
 driver.get("https://orteil.dashnet.org/experiments/cookie/")
 cookie = driver.find_element(By.ID, "cookie")
 money = driver.find_element(By.ID, "money")
+cursor = driver.find_element(By.ID, "buyCursor")
 
 
 last_execution_time = time.time()
 
 while True:
     cookie.click()
+
+    current_time = time.time()
+
+    if current_time - last_execution_time >= 5:
+        cursor.click()
 
 
 
