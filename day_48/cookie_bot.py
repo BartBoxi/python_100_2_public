@@ -23,7 +23,10 @@ while True:
     current_time = time.time()
 
     if current_time - last_execution_time >= 5:
+        if
         cursor.click()
+    else:
+        cookie.click()
 
 
 
