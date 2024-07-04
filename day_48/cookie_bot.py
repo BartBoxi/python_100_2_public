@@ -19,14 +19,15 @@ last_execution_time = time.time()
 
 while True:
     cookie.click()
-
     current_time = time.time()
-
-    if current_time - last_execution_time >= 5:
-        if
-        cursor.click()
-    else:
-        cookie.click()
+    if current_time - last_execution_time >= 100:
+        buy_element = driver.find_element(By.ID, 'buyCursor')
+        buy_text = buy_element.text
+        print(buy_text)
+    #     if
+    #     cursor.click()
+    # else:
+    #     cookie.click()
 
 
 
