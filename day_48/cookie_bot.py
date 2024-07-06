@@ -31,7 +31,6 @@ lab = driver.find_element(By.ID, "buyAlchemy lab")
 portal = driver.find_element(By.ID, "buyPortal")
 machine = driver.find_element(By.ID, "buyTime machine")
 
-list = [cookie, money, cursor. grandma, factory, mine, shipment, lab, portal, machine]
 
 last_execution_time = time.time()
 
