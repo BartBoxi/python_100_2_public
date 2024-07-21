@@ -8,26 +8,20 @@ chrome_options.add_experimental_option("detach", True)
 driver = webdriver.Chrome(options=chrome_options)
 
 driver.get("https://orteil.dashnet.org/experiments/cookie/")
-cookie = driver.find_element(By.ID, "cookie")
+
+items = driver.find_elements(By.CSS_SELECTOR, "#store div")
+item_ids = [item.get_attribute("id") for item in items]
+
+all_prices = driver.find_elements(By.CSS_SELECTOR, "#store b")
+item_prices = []
+
+for price in all_prices:
+    price_text = price.text
+    if price_text:
+        final_price = price_text.split(" - ")
+        final_price = final_price[1].replace(",","")
+        final_price = int(final_price)
+        item_prices.append(final_price)
+        print(item_prices)
 
 
-
-
-timeout = time.time() + 60 * 0.1 #5 min from the start
-
-while True:
-    test = 0
-    cookie.click()
-    money = driver.find_element(By.ID, "money")
-    money = money.text
-
-    items = driver.find_elements(by=By.CSS_SELECTOR, value="#store div")
-
-    item_ids = [item.get_attribute("id") for item in items]
-
-
-
-
-    if test == 5 or time.time() > timeout:
-        break
-    test = test - 1
