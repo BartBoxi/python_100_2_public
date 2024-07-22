@@ -18,9 +18,10 @@ cookie = driver.find_element(By.ID, "cookie")
 #get list of the items to buy
 items = driver.find_elements(By.CSS_SELECTOR, "#store div")
 item_ids = [item.get_attribute("id") for item in items]
+print(item_ids)
 
 timeout = time.time() + 5
-five_min = time.time() + 60 * 5
+five_min = time.time() + 60 * 0.1
 
 
 while True:
@@ -39,11 +40,24 @@ while True:
                 final_price = final_price[1].replace(",","")
                 final_price = int(final_price)
                 item_prices.append(final_price)
-        print(item_prices)
+        print(len(item_prices))
 
     #next steps is to create a dictionary with item name and prices
+
+        item_dict = dict(zip(item_ids, item_prices))
+        #print(item_dict)
+
+        ### method 2 for getting dict from two lists
+
+        # item_dict = {}
+        # for i in range(len(item_ids)):
+        #     item_dict[item_ids[i]] = item_prices[i] #here issue is that two list got different len
+
+        # print(item_dict)
+
     # next get the current cookie count
-    # gind upgrades that we can afford
+
+    # find upgrades that we can afford
 
     if time.time() > five_min:
         break
