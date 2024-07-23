@@ -40,7 +40,7 @@ while True:
                 final_price = final_price[1].replace(",","")
                 final_price = int(final_price)
                 item_prices.append(final_price)
-        print(len(item_prices))
+        #print(len(item_prices))
 
     #next steps is to create a dictionary with item name and prices
 
@@ -56,6 +56,11 @@ while True:
         # print(item_dict)
 
     # next get the current cookie count
+
+    cookie_count = driver.find_element(By.ID, value="money")
+    cookie_count = cookie_count.text
+    cookie_count = int(cookie_count)
+    print(cookie_count)
 
     # find upgrades that we can afford
 
