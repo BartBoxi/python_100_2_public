@@ -61,6 +61,7 @@ while True:
 
         cookie_count = driver.find_element(By.ID, value="money")
         cookie_count = cookie_count.text
+        cookie_count = cookie_count.replace(',','')
         cookie_count = int(cookie_count)
         #print(cookie_count)
 
