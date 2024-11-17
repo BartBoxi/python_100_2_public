@@ -25,7 +25,7 @@ def fast_function():
 @speed_calc_decorator
 def slow_function():
     for i in range(10000000):
-        i * i
+        i * iq
 
 
 fast_function()
