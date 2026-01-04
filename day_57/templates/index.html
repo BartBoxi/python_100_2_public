@@ -1,20 +1,29 @@
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>My Website</title>
-</head>
-
 <body>
-    <h1>Hey {{ name }},</h1>
-    <h2>I think your gender is {{ gender }}</h2>
-    <h3>And I'm {{ prob }}% sure about it</h3>
+    <h1>Welcome to the Gender Guesser!</h1>
+
+    <form action="/" method="POST">
+        <label for="user_name">Enter a name:</label>
+
+        <input type="text" id="user_name" name="user_name" placeholder="Enter a name..." required>
+
+        <button type="submit">Submit (Form Method)</button>
+    </form>
+
+    <p>
+        <a id="guessLink" href="/guess/">Direct Link to guessr</a>
+    </p>
+
+    <script>
+        // Match the ID from the input above
+        const input = document.getElementById('user_name');
+        const link = document.getElementById('guessLink');
+
+        input.addEventListener('input', function () {
+            link.href = "/guess/" + input.value;
+        });
+    </script>
+
+    <footer>
+        <p>Copyright {{ year }}</p>
+    </footer>
 </body>
-
-
-<footer>
-    <p>©Copyright {{ year }}</p>
-</footer>
-
-
-</html>
